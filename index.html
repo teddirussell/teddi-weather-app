@@ -1,0 +1,86 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/151388ffa1.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="src/style.css">
+<link rel="stylesheet" href="src/index.js" class="js">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <div id="weather" class="weather-container">
+    <div class="row">
+
+      <div class="clearfix">
+        <form class="float-left search-form" id="search-form">
+        <input type="text" placeholder="Enter a city" autocomplete="off" id="city-input">
+        <input type="submit" class="btn btn-primary" value="Search">
+        <button class="float-left btn btn-success" id="current-location-button">Current</button></form>
+        </div>
+    </div>
+
+        <div class="row current-weather">
+      <div class="col-6">
+        <h1 id="city"></h1>
+        <h2 id="date"></h2>
+        <h3 id="condition"></h3>
+      </div>
+</div>
+
+
+    <div class="row current-weather">
+      <div class="col-6">
+        <i class="fa-solid fa-sun sun weather-icon"></i>
+        <h2 class="weather" id="temperature"></h2><sub class="current-temp">
+          &deg;C|&deg;F</sub> 
+      </div>
+      <div class="col-6">
+        <p>Humidity: <span id="humidity"></span>%<br>
+              Wind: <span id="wind"></span> km/h</p>
+    </div>
+
+    <div class="row weekly">            
+    <div class="card text-center">
+      <div class="card-body">
+    <div class="row ">
+      <div class="col-1">
+      </div>
+      <div class="col-2">
+        <h3 class="week">Wed</h3>
+        <i class="fa-solid fa-sun sunweek"></i>
+        <br>
+        <h4 class="week-temp">16&deg;</h4>
+      </div>
+      <div class="col-2">
+        <h3 class="week">Thu</h3>
+        <i class="fa-solid fa-cloud-rain rainweek"></i>
+        <h4 class="week-temp">13&deg;</h4>
+      </div>
+      <div class="col-2">
+        <h3 class="week">Fri</h3>
+        <i class="fa-solid fa-cloud-showers-heavy heavyweek"></i>
+        <h4 class="week-temp">13&deg;</h4>
+      </div>
+      <div class="col-2">
+        <h3 class="week">Sat</h3>
+        <i class="fa-solid fa-cloud cloudweek"></i>
+        <h4 class="week-temp">15&deg;</h4>
+      </div>
+      <div class="col-2">
+        <h3 class="week">Sun</h3>
+        <i class="fa-solid fa-cloud cloudweek"></i>
+        <h4 class="week-temp">15&deg;</h4>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script> 
+  </body>
+</html>
