@@ -1,28 +1,43 @@
-function formatDate(date) {
-    let hours = date.getHours();
-    if (hours < 10) {
-      hours = `0${hours}`;
-    }
-    let minutes = date.getMinutes();
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-  
-    let dayIndex = date.getDay();
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    let day = days[dayIndex];
-  
-    return `${day} ${hours}:${minutes}`;
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
   
+
+  
+  function searchCity(city) {
+    let apiKey = "c9990719b68fb3b69a357ef1e3379959";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeatherCondition);
+  }
+
   function displayWeatherCondition(response) {
     document.querySelector("#city").innerHTML = response.data.name;
     document.querySelector("#temperature").innerHTML = Math.round(
@@ -35,12 +50,12 @@ function formatDate(date) {
     );
     document.querySelector("#condition").innerHTML =
       response.data.weather[0].main;
-  }
-  
-  function searchCity(city) {
-    let apiKey = "c9990719b68fb3b69a357ef1e3379959";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeatherCondition);
+
+      document.querySelector("#icon").setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
+      iconElement.setAttribute("alt", response.data.weather[0].description);
   }
   
   function handleSubmit(event) {
