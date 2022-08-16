@@ -45,6 +45,12 @@ body {
   .current-weather {
     margin-top: 20px;
   }
+
+  .current-weather img {
+    margin-right: 5px;
+    height: 64px;
+    width: 64px;
+  }
   
   .weather-icon {
     margin-top: 5px;
