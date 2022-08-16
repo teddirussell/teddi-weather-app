@@ -16,7 +16,7 @@
     <div id="weather" class="weather-container">
     <div class="row">
 
-      <div class="clearfix">
+      <div class="d-flex">
         <form class="float-left search-form" id="search-form">
         <input type="text" placeholder="Enter a city" autocomplete="off" id="city-input">
         <input type="submit" class="btn btn-primary" value="Search">
@@ -34,9 +34,10 @@
 
 
     <div class="row current-weather">
-      <div class="col-6">
-        <i class="fa-solid fa-sun sun weather-icon"></i>
-        <h2 class="weather" id="temperature"></h2><sub class="current-temp">
+      <div class="d-flex col-6">
+        <img src="" alt="Clear" id="icon" />
+        <h2 class="weather" id="temperature"></h2>
+        <sub class="current-temp">
           &deg;C|&deg;F</sub> 
       </div>
       <div class="col-6">
@@ -81,7 +82,7 @@
 </div>
 </div>
   </div>
-  <p><a href="https://github.com/teddirussell/teddi-weather-app" target="_blank"> Open-source code</a>, by Teddi Russell</p>
-    <script src="src/script.js"></script> 
+  <small><a href="https://github.com/teddirussell/teddi-weather-app" target="_blank"> Open-source code</a>, by Teddi Russell</small>
+  <script src="src/script.js"></script> 
   </body>
 </html>
