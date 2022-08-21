@@ -30,7 +30,30 @@ function formatDay(timestamp) {
   return days[day];
 }
   
-
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row ">`;
+let days = [
+ "Tue",
+  "Wed",
+  "Thur",
+  "Fri",
+  "Sat",
+  "Sun",
+];
+days.forEach(function (day) {
+  forecastHTML = forecastHTML + 
+  `
+      <div class="col-2">
+        <h3 class="week">${day}</h3>
+        <i class="fa-solid fa-cloud cloudweek"></i>
+        <h4 class="week-temp">15&deg;</h4>
+    </div>
+`;
+});
+forecastHTML = forecastHTML +`</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
   
   function searchCity(city) {
     let apiKey = "c9990719b68fb3b69a357ef1e3379959";
@@ -118,3 +141,5 @@ let temperatureElement = document.querySelector("#temperature");
 celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
   searchCity("New York");
+
+  displayForecast();
