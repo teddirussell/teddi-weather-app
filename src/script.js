@@ -29,37 +29,43 @@ function formatDay(timestamp) {
 
   return days[day];
 }
+
+
   
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
+  let days = [
+    "Tue",
+     "Wed",
+     "Thur",
+     "Fri",
+     "Sat",
+     "Sun",
+   ];
+
   let forecastHTML = `<div class="row ">`;
-let days = [
- "Tue",
-  "Wed",
-  "Thur",
-  "Fri",
-  "Sat",
-  "Sun",
-];
+
 days.forEach(function (day) {
   forecastHTML = forecastHTML + 
   `
       <div class="col-2">
-        <h3 class="week">${day}</h3>
+      <div class="weather-forecast-date"><h3 class="week">${day}</h3></div>
         <i class="fa-solid fa-cloud cloudweek"></i>
-        <h4 class="week-temp">15&deg;</h4>
+        <div class="weather-forecast-temperatures"><h4 class="week-temp">15&deg;</h4></div>
     </div>
 `;
 });
 forecastHTML = forecastHTML +`</div>`;
 forecastElement.innerHTML = forecastHTML;
 }
-  
-  function searchCity(city) {
-    let apiKey = "c9990719b68fb3b69a357ef1e3379959";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeatherCondition);
-  }
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "c9990719b68fb3b69a357ef1e3379959";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
   function displayWeatherCondition(response) {
     let temperatureElement = document.querySelector("#temperature");
@@ -86,7 +92,13 @@ forecastElement.innerHTML = forecastHTML;
   
     getForecast(response.data.coord);
   }
-  
+
+  function searchCity(city) {
+    let apiKey = "c9990719b68fb3b69a357ef1e3379959";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeatherCondition);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let city = document.querySelector("#city-input").value;
@@ -141,5 +153,3 @@ let temperatureElement = document.querySelector("#temperature");
 celsiusLink.addEventListener("click", displayCelsiusTemperature)
 
   searchCity("New York");
-
-  displayForecast();
